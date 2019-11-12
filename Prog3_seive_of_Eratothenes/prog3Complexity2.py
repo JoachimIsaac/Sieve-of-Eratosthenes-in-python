@@ -167,21 +167,21 @@ for position in range(len(numbers_to_check)):
         seive2.set_limit(numbers_to_check[position])
         start = time.time()
         result = seive2.sieveofEratosthenes2()
-        elapsed_time_fl = (time.time() - start)
+        elapsed_time = (time.time() - start)
         outfile.write("%9d %24s %50s \n"
-              %(numbers_to_check[position], len(result), str(elapsed_time_fl)))
+              %(numbers_to_check[position], len(result), str(elapsed_time)))
     elif numbers_to_check[position] == 500:
         pass
-        # seive1.set_limit(numbers_to_check[position])
+        # seive2.set_limit(numbers_to_check[position])
         # start = time.time()
-        # result = seive1.sieveofEratosthenes2()
-        # elapsed_time_fl = (time.time() - start)
+        # result = seive2.sieveofEratosthenes2()
+        # elapsed_time = (time.time() - start)
         # outfile.write("Prime less than: %2d ,  Number of Primes: %2s ,  Time taken: %4s \n\n"
-        #       %(numbers_to_check[position], len(result), str(elapsed_time_fl)))
+        #       %(numbers_to_check[position], len(result), str(elapsed_time)))
         # outfile.write("All Primes of 500: \n\n"+ print_contents(result) +"\n")
 
     start = 0
-    elapsed_time_fl = 0
+    elapsed_time = 0
 
 outfile.close()
 
