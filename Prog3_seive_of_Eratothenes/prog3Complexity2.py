@@ -13,6 +13,9 @@ Important points:(Things I learned):
 --> pass is a null operation -- when it is executed, nothing happens.
     It is useful as a placeholder when a statement is required syntactically,
     but no code needs to be executed.
+---> execution time and time complexity does not always have a predictable
+     outcome. Sometimes a time complexity that is better does not always
+     run faster than a time complexity that is worst; for every case.
 """
 
 
