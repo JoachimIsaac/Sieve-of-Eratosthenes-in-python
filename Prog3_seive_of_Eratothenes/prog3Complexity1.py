@@ -39,76 +39,52 @@ class Find_Primes1:
 
 
 
-        # Calculates the prime numbers less than the limit.
-        # Time complexity: O(n)
-        """
-        It Loads in numbers less than the limit 
-        and then removes all multiples of i*prime[j] which are not primes. 
-        This makes it run with a Time complexity of O(n).
-        What is interesting is that although it has a time complexity 
-        of O(n), it's run time is still more than the run time of the
-        second algorithm; when checking the values of [500,5000,50000,100000].
-        This is most likely is because for values of 'n' where 'n' is the
-        limit (value inputted to check for primes, less than itself). For values 
-        of 'n' that are not very large, we don't see a significant difference
-        in run time between the two algorithms. Although the time complexity
-        of O(n) is better than the time complexity of O(n*log(log(n))). 
-        For these test cases this algorithm performs worst than the 
-        second algorithm.
-        """
+
+
+
+    #Calculates the prime numbers less than the limit.
+    #Time complexity: O(n*log(log(n)))
+    """
+    Creates a boolean array of the value True, changes a
+    value to false if "i" is not a prime number. Then it updates 
+    all multiples of p to false. Then it loads the result 
+    array based on the values received from the prime array
+    at each position 'p'. 
+    This algorithm has a time complexity of O(n*log(log(n)))
+    which is worst than the second algorithm's time complexity 
+    of O(n); but this algorithm runs faster for our test cases 
+    of [500,5000,50000,100000]. It seems that for 'n' where 'n' is the
+    limit (value in putted to check for primes, less than itself). For values 
+    of 'n' that are not very large we don't see a significant difference
+    in run time when compared to that of the second algorithm. In fact what was 
+    seen was that for these test cases this algorithm computes it faster than the
+    second implementation that has a better time complexity.
+    """
     def sieveofEratosthenes1(self):
-        MAX_SIZE = self.limit
+        # Create a boolean array "prime[0..n]" and initialize
+        # all entries it as true. A value in prime[i] will
+        # finally be false if i is Not a prime, else true.
+        result = []
+        prime = [True for i in range(self.limit + 1)]
+        p = 2
+        while (p * p <= self.limit):
 
-        # isPrime[] : isPrime[i] is true if
-        #             number is prime
-        # prime[] : stores all prime number
-        #           less than N
-        # SPF[] that store smallest prime
-        # factor of number [for ex : smallest
-        # prime factor of '8' and '16'
-        # is '2' so we put SPF[8] = 2 ,
-        # SPF[16] = 2 ]
+            # If prime[p] is not changed, then it is a prime
+            if (prime[p] == True):
 
-        isprime = [True] * MAX_SIZE
-        prime = []
-        SPF = [None] * (MAX_SIZE)
+                # Update all multiples of p
+                for i in range(p * 2, self.limit + 1, p):
+                    prime[i] = False
+            p += 1
+        prime[0] = False
+        prime[1] = False
 
-        # 0 and 1 are not prime
-        isprime[0] = isprime[1] = False
+        # Load all primes
+        for p in range(self.limit + 1):
+            if prime[p]:
+                result.append(p)
+        return result
 
-        # Fill rest of the entries
-        for i in range(2, self.limit):
-
-            # If isPrime[i] == True then i is
-            # prime number
-            if isprime[i] == True:
-                # put i into prime[] list
-                prime.append(i)
-
-                # A prime number is its own smallest
-                # prime factor
-                SPF[i] = i
-
-            # Remove all multiples of i*prime[j]
-            # which are not prime by making is
-            # Prime[i * prime[j]] = false and put
-            # smallest prime factor of i*Prime[j]
-            # as prime[j] [ for exp :let i = 5 , j = 0 ,
-            # prime[j] = 2 [ i*prime[j] = 10 ]
-            # so smallest prime factor of '10' is '2'
-            # that is prime[j] ] this loop run only one
-            # time for number which are not prime
-            j = 0
-            while (j < len(prime) and i * prime[j] < self.limit and
-                   prime[j] <= SPF[i]):
-                isprime[i * prime[j]] = False
-
-                # put smallest prime factor of i*prime[j]
-                SPF[i * prime[j]] = prime[j]
-
-                j += 1
-
-        return prime
 
 
 
