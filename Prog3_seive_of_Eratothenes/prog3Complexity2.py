@@ -30,7 +30,7 @@ class Find_Primes2:
     #sets the limit.
     def set_limit(self,limit):
         if limit < 2:
-            limit = 50
+            self.limit = 50
 
         self.limit = limit
 
@@ -56,7 +56,10 @@ class Find_Primes2:
         in run time between the two algorithms. Although the time complexity
         of O(n) is better than the time complexity of O(n*log(log(n))). 
         For these test cases this algorithm performs worst than the 
-        first algorithm.
+        first algorithm. This could also because it has to load two arrays
+        isprime and SPF up to 'n'(MAXSIZE) times before loading another array
+        'prime' with the actual answers. O(n) but the steps invloved makes it take longer
+        than the algortihm that has a time complexity of O(n * log(log(n))).
         """
     def sieveofEratosthenes2(self):
         MAX_SIZE = self.limit

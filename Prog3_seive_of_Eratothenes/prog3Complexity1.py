@@ -28,17 +28,14 @@ class Find_Primes1:
     #Sets the limit.
     def set_limit(self,limit):
         if limit < 2:
-            limit = 50
+           self.limit = 50
 
         self.limit = limit
+
 
     #Returns the current limit.
     def get_limit(self):
         return self.limit
-
-
-
-
 
 
 
@@ -54,7 +51,7 @@ class Find_Primes1:
     which is worst than the second algorithm's time complexity 
     of O(n); but this algorithm runs faster for our test cases 
     of [500,5000,50000,100000]. It seems that for 'n' where 'n' is the
-    limit (value in putted to check for primes, less than itself). For values 
+    limit (value inputted to check for primes, less than itself). For values 
     of 'n' that are not very large we don't see a significant difference
     in run time when compared to that of the second algorithm. In fact what was 
     seen was that for these test cases this algorithm computes it faster than the
@@ -105,6 +102,8 @@ def print_contents(array):
             counter = 20
 
     return result
+
+
 
 #Reads in input file name and returns a file object.
 def open_output_file():
