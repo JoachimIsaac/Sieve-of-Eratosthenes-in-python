@@ -1,8 +1,0 @@
-Name: Joachim Isaac:
-Program 3: Sieve of Eratosthenes and Complexity 
-Complexity analysis 1, Prog1:
-
-Primes less than         Number of Primes                              Time taken 
-     5000                      669                               0.021765947341918945 
-    50000                     5133                                 0.0394439697265625 
-   100000                     9592                                0.07329010963439941 
